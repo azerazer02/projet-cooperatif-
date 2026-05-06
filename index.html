@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Weather</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Instant Weather</h1>
+        <p>Consultez la météo de votre commune en un instant.</p>
+    </header>
+
+    <main>
+        <!-- Formulaire pour saisir le code postal et choisir la commune -->
+        <section class="form-section">
+            <form id="weather-form">
+                <div class="form-group">
+                    <label for="postal-code">Code postal :</label>
+                    <input type="text" id="postal-code" name="postal-code" placeholder="Ex: 35000" required aria-required="true" pattern="[0-9]{5}">
+                    <button type="button" id="btn-search-city">Chercher les communes</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="city-select">Choix de la commune :</label>
+                    <select id="city-select" name="city-select" disabled aria-disabled="true">
+                        <option value="">Sélectionnez d'abord un code postal</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="btn-get-weather" disabled aria-disabled="true">Afficher la météo</button>
+            </form>
+            <div id="error-message" class="error" aria-live="polite"></div>
+        </section>
+
+        <!-- Zone d'affichage des résultats -->
+        <section id="weather-results" class="results-section hidden" aria-live="polite">
+            <h2>Météo pour <span id="display-city-name">...</span></h2>
+            <div class="weather-data">
+                <!-- Affichage des 4 informations requises -->
+                <p><strong>Température minimale :</strong> <span id="tmin">--</span> °C</p>
+                <p><strong>Température maximale :</strong> <span id="tmax">--</span> °C</p>
+                <p><strong>Probabilité de pluie :</strong> <span id="probarain">--</span> %</p>
+                <p><strong>Heures d'ensoleillement :</strong> <span id="sun-hours">--</span> h</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
